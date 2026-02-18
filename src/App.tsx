@@ -1,10 +1,10 @@
-import { AudioPlayer } from "@/components/audioplayer";
+import { AudioPlayer } from "@/components/audioPlayer";
 import { WeddingSchedule } from "@/components/schedule";
 import { WeddingGallery } from "@/components/gallery";
 import { WeddingLocation } from "@/components/location";
-import { GuestBook } from "@/components/guestbook";
+import { GuestBook } from "@/components/guestBook";
 import { Separator } from "@/components/ui/separator";
-import { MoneyGift } from "@/components/moneygift";
+import { MoneyGift } from "@/components/moneyGift";
 import cover from "@/assets/images/cover.png";
 
 export default function App() {
