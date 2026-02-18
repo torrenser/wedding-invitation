@@ -21,13 +21,13 @@ export function WeddingLocation() {
              지도 영역
            </div>
            <div className="grid grid-cols-3 gap-2">
-             <Button variant="outline" size="sm" className="w-full text-xs" asChild>
+             <Button variant="outline" size="sm" className="w-full text-xs">
                <a href="#" target="_blank" rel="noreferrer">네이버 지도</a>
              </Button>
-             <Button variant="outline" size="sm" className="w-full text-xs" asChild>
+             <Button variant="outline" size="sm" className="w-full text-xs">
                <a href="#" target="_blank" rel="noreferrer">카카오 맵</a>
              </Button>
-             <Button variant="outline" size="sm" className="w-full text-xs" asChild>
+             <Button variant="outline" size="sm" className="w-full text-xs">
                <a href="#" target="_blank" rel="noreferrer">구글 맵</a>
              </Button>
            </div>

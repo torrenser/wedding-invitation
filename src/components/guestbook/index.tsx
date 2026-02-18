@@ -93,7 +93,7 @@ export const GuestBook = () => {
       <div className="flex flex-col gap-2 px-4">
         {supabase && (
           <Dialog open={isWriteOpen} onOpenChange={setIsWriteOpen}>
-            <DialogTrigger asChild>
+            <DialogTrigger>
               <Button variant="outline" className="w-full">
                 방명록 작성하기
               </Button>
@@ -114,7 +114,7 @@ export const GuestBook = () => {
         )}
 
         <Dialog open={isAllOpen} onOpenChange={setIsAllOpen}>
-          <DialogTrigger asChild>
+          <DialogTrigger>
             <Button variant="outline" className="w-full">
               방명록 전체보기
             </Button>
@@ -123,7 +123,7 @@ export const GuestBook = () => {
             <DialogHeader>
               <DialogTitle>방명록 전체보기</DialogTitle>
             </DialogHeader>
-            <AllGuestBookContent loadComments={loadComments} />
+            <AllGuestBookContent />
           </DialogContent>
         </Dialog>
       </div>
@@ -233,11 +233,7 @@ const WriteGuestBookForm = ({
   )
 }
 
-const AllGuestBookContent = ({
-  loadComments,
-}: {
-  loadComments: () => Promise<void>
-}) => {
+const AllGuestBookContent = () => {
   const [comments, setComments] = useState<Comment[]>([])
   const [currentPage, setCurrentPage] = useState(0)
   const [totalPages, setTotalPages] = useState(1)
