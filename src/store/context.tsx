@@ -1,17 +1,15 @@
-import { createContext } from "react"
+import { createContext } from "react";
 
-export interface GoogleContextProps {
-  isSignedIn: boolean
-  signIn: () => void
-  signOut: () => void
-  listFiles: () => Promise<any[]>
-  uploadFiles: (files: File[], guestName: string) => Promise<void>
+interface GoogleContextType {
+  isSignedIn: boolean;
+  signIn: () => void;
+  signOut: () => void;
+  uploadFiles: (files: File[], guestName: string, onProgress: (progress: number) => void) => Promise<void>;
 }
 
-export const GoogleContext = createContext<GoogleContextProps>({
+export const GoogleContext = createContext<GoogleContextType>({
   isSignedIn: false,
   signIn: () => {},
   signOut: () => {},
-  listFiles: async () => [],
   uploadFiles: async () => {},
-})
+});

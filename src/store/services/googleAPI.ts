@@ -8,7 +8,7 @@ export const initGapiClient = async () => {
 	})
 }
 
-export const listFiles = async (): Promise<gapi.client.drive.File[]> => {
+export const listFiles = async (): Promise<any[]> => {
 	try {
 		const response = await gapi.client.drive.files.list({
 			pageSize: 10,

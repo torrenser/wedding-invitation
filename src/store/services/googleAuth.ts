@@ -1,10 +1,10 @@
 export const CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID
 export const SCOPES = 'https://www.googleapis.com/auth/drive.file'
 
-let tokenClient: google.accounts.oauth2.TokenClient
+let tokenClient: any
 let accessToken: string | null = null
 
-export const initGIS = (callbackTc: (nR: google.accounts.oauth2.TokenResponse) => void) => {
+export const initGIS = (callbackTc: (nR: any) => void) => {
 	try {
 		if (!CLIENT_ID) {
 			throw new Error('VITE_GOOGLE_CLIENT_ID is not defined in environment variables')
@@ -17,17 +17,13 @@ export const initGIS = (callbackTc: (nR: google.accounts.oauth2.TokenResponse) =
 		tokenClient = google.accounts.oauth2.initTokenClient({
 			client_id: CLIENT_ID,
 			scope: SCOPES,
-			callback: response => {
+			callback: (response: any) => {
 				if (response.error) {
 					console.error('Token client error:', response.error)
 					return
 				}
 				if (response.access_token) {
 					accessToken = response.access_token
-					// 로그인 성공 시 gapi client에도 토큰을 설정하여 googleAPI.ts에서 사용할 수 있게 함
-					if (typeof gapi !== 'undefined' && gapi.client) {
-						gapi.client.setToken(response as any)
-					}
 				}
 				callbackTc(response)
 			},
