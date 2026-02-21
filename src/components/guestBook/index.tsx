@@ -93,11 +93,13 @@ export const GuestBook = () => {
       <div className="flex flex-col gap-2 px-4">
         {supabase && (
           <Dialog open={isWriteOpen} onOpenChange={setIsWriteOpen}>
-            <DialogTrigger>
-              <Button variant="outline" className="w-full">
-                방명록 작성하기
-              </Button>
-            </DialogTrigger>
+            <DialogTrigger
+              render={
+                <Button variant="outline" className="w-full">
+                  방명록 작성하기
+                </Button>
+              }
+            />
             <DialogContent className="sm:max-w-[425px]">
               <DialogHeader>
                 <DialogTitle>방명록 작성하기</DialogTitle>
@@ -114,11 +116,13 @@ export const GuestBook = () => {
         )}
 
         <Dialog open={isAllOpen} onOpenChange={setIsAllOpen}>
-          <DialogTrigger>
-            <Button variant="outline" className="w-full">
-              방명록 전체보기
-            </Button>
-          </DialogTrigger>
+          <DialogTrigger
+            render={
+              <Button variant="outline" className="w-full">
+                방명록 전체보기
+              </Button>
+            }
+          />
           <DialogContent className="max-w-[90vw] max-h-[80vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle>방명록 전체보기</DialogTitle>

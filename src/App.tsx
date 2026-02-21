@@ -4,6 +4,7 @@ import { WeddingGallery } from "@/components/gallery";
 import { WeddingLocation } from "@/components/location";
 import { GuestBook } from "@/components/guestBook";
 import { Separator } from "@/components/ui/separator";
+import { WeddingEvent } from "@/components/events";
 import { MoneyGift } from "@/components/moneyGift";
 import cover from "@/assets/images/cover.png";
 import bgm from "@/assets/sounds/bgm.mp3";
@@ -60,6 +61,10 @@ export default function App() {
 
         {/* Location Section */}
         <WeddingLocation />
+
+        <Separator />
+
+        <WeddingEvent />
 
         <Separator />
 
