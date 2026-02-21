@@ -1,3 +1,4 @@
+import { getAccessToken } from './googleAuth.ts'
 export const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY
 const DISCOVERY_DOCS = ['https://www.googleapis.com/discovery/v1/apis/drive/v3/rest']
 
@@ -61,6 +62,11 @@ export const uploadFiles = async (
 
   if (!gapi.client.drive) {
     await initGapiClient()
+  }
+
+  const accessToken = getAccessToken()
+  if (accessToken) {
+    gapi.client.setToken({ access_token: accessToken })
   }
 
   // 1. Find the parent 'wedding' folder.

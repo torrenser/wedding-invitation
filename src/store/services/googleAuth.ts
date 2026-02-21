@@ -1,5 +1,5 @@
 export const CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID
-export const SCOPES = 'https://www.googleapis.com/auth/drive.file'
+export const SCOPES = 'https://www.googleapis.com/auth/drive'
 
 let tokenClient: any
 let accessToken: string | null = null
@@ -24,6 +24,9 @@ export const initGIS = (callbackTc: (nR: any) => void) => {
 				}
 				if (response.access_token) {
 					accessToken = response.access_token
+					if (typeof gapi !== 'undefined' && gapi.client) {
+						gapi.client.setToken(response)
+					}
 				}
 				callbackTc(response)
 			},
