@@ -10,7 +10,7 @@ export const initGIS = (callbackTc: (nR: any) => void) => {
 			throw new Error('VITE_GOOGLE_CLIENT_ID is not defined in environment variables')
 		}
 
-		if (!google || !google.accounts || !google.accounts.oauth2) {
+		if (!google || !google?.accounts || !google?.accounts?.oauth2) {
 			throw new Error('Google Identity Services not available')
 		}
 
