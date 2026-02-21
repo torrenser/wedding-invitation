@@ -6,6 +6,7 @@ import { GuestBook } from "@/components/guestBook";
 import { Separator } from "@/components/ui/separator";
 import { MoneyGift } from "@/components/moneyGift";
 import cover from "@/assets/images/cover.png";
+import bgm from "@/assets/sounds/bgm.mp3";
 
 export default function App() {
   return (
@@ -69,7 +70,7 @@ export default function App() {
         <GuestBook />
 
         {/* Audio Player */}
-        <AudioPlayer src="https://cdn.salondeletter.com/202511/27/169886/089a7735.mp3" />
+        <AudioPlayer src={bgm} />
       </div>
     </div>
   );
