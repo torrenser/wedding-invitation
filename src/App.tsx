@@ -7,7 +7,6 @@ import { Separator } from "@/components/ui/separator";
 import { WeddingEvent } from "@/components/events";
 import { MoneyGift } from "@/components/moneyGift";
 import cover from "@/assets/images/cover.png";
-import bgm from "@/assets/sounds/bgm.mp3";
 
 export default function App() {
   return (
@@ -75,7 +74,7 @@ export default function App() {
         <GuestBook />
 
         {/* Audio Player */}
-        <AudioPlayer src={bgm} />
+        <AudioPlayer src={`${import.meta.env.BASE_URL}bgm.mp3`} />
       </div>
     </div>
   );

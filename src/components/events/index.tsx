@@ -1,5 +1,5 @@
 import { WeddingSection } from "@/components/section";
-import { EventItem, GuestSnapEvent } from "./WeddingEvent";
+import { EventItem, GuestSnapEvent } from "./SnapShotEvent";
 
 export function WeddingEvent() {
   return (

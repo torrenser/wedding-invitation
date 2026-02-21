@@ -1,4 +1,5 @@
-import { useState, useEffect, type ReactNode } from "react";
+import { useState, useEffect, useContext, type ReactNode } from "react";
+import { GoogleContext } from "@/store/context";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -49,7 +50,7 @@ export function GuestSnapEvent() {
       <div className="space-y-2">
         <h4 className="text-lg font-bold text-primary">📸 저희의 스냅 작가가 되어주세요! 📸</h4>
         <div className="text-sm text-gray-600 leading-relaxed space-y-4">
-          <p>신랑 신부의 아름다운 모습들을 사진으로 남겨주세요!!</p>
+          <p>신랑 신부의 아름다운 모습들을 사진으로 남겨주세요!</p>
           <ul className="text-left inline-block space-y-1 text-xs bg-gray-50 p-4 rounded-lg mx-auto">
             <li>1. 신부 대기실 사진</li>
             <li>2. 웃고 있는 신랑신부</li>
@@ -90,6 +91,7 @@ export function GuestSnapEvent() {
 }
 
 function UploadForm({ onClose }: { onClose: () => void }) {
+  const { isSignedIn, signIn, uploadFiles } = useContext(GoogleContext);
   const [name, setName] = useState("");
   const [files, setFiles] = useState<FileList | null>(null);
   const [previews, setPreviews] = useState<string[]>([]);
@@ -120,6 +122,11 @@ function UploadForm({ onClose }: { onClose: () => void }) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!isSignedIn) {
+      signIn();
+      return;
+    }
+
     if (!name || !files || files.length === 0) {
       alert("이름과 사진을 모두 입력해주세요.");
       return;
@@ -128,23 +135,19 @@ function UploadForm({ onClose }: { onClose: () => void }) {
     setUploading(true);
     setProgress(0);
 
-    // 업로드 시뮬레이션 (실제 서버 연동 시 이 부분을 수정하면 됩니다)
-    const totalSize = Array.from(files).reduce((acc, file) => acc + file.size, 0);
-    let uploaded = 0;
-    
-    const interval = setInterval(() => {
-      uploaded += totalSize / 20; // 20단계로 나누어 진행
-      if (uploaded >= totalSize) {
-        uploaded = totalSize;
-        clearInterval(interval);
-        setTimeout(() => {
-            setUploading(false);
-            alert("업로드가 완료되었습니다! 참여해 주셔서 감사합니다.");
-            onClose();
-        }, 500);
-      }
-      setProgress(Math.min(100, Math.round((uploaded / totalSize) * 100)));
-    }, 100);
+    try {
+      // 실제 구글 드라이브 업로드
+      await uploadFiles(Array.from(files), name, setProgress);
+      setProgress(100);
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      alert("업로드가 완료되었습니다! 참여해 주셔서 감사합니다.");
+      onClose();
+    } catch (error) {
+      console.error("Upload failed:", error);
+      alert("업로드 중 오류가 발생했습니다. 다시 시도해주세요.");
+    } finally {
+      setUploading(false);
+    }
   };
 
   return (
@@ -204,12 +207,18 @@ function UploadForm({ onClose }: { onClose: () => void }) {
         </div>
       )}
 
+      {!isSignedIn && (
+        <div className="text-xs text-center text-red-500">
+          ⚠️ 원활한 사진 공유를 위해 신랑 계정으로 먼저 로그인해주세요.
+        </div>
+      )}
+
       <div className="flex justify-end gap-2 pt-4">
         <Button type="button" variant="outline" onClick={onClose} disabled={uploading}>
           취소
         </Button>
         <Button type="submit" disabled={uploading}>
-          {uploading ? "업로드 중..." : "업로드"}
+          {uploading ? "업로드 중..." : isSignedIn ? "업로드" : "신랑 계정으로 로그인"}
         </Button>
       </div>
     </form>
