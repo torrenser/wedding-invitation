@@ -1,6 +1,6 @@
 import { useState, useEffect, type ReactNode } from "react";
 import { GoogleContext } from "./context";
-import { initGIS, signIn, signOut } from "./services/GoogleAuth";
+import { initGIS, signIn, signOut } from "./services/googleAuth";
 import { uploadFiles } from "./services/googleAPI";
 
 export const StoreProvider = ({ children }: { children: ReactNode }) => {
