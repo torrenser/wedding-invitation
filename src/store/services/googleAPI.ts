@@ -1,12 +1,10 @@
 import { getAccessToken } from './googleAuth.ts'
 export const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY
-const DISCOVERY_DOCS = ['https://www.googleapis.com/discovery/v1/apis/drive/v3/rest']
+const DISCOVERY_DOCS = 'https://www.googleapis.com/discovery/v1/apis/drive/v3/rest'
 
 export const initGapiClient = async () => {
-	await gapi.client.init({
-		apiKey: API_KEY,
-		discoveryDocs: DISCOVERY_DOCS,
-	})
+	await gapi.client.init({})
+	await gapi.client.load(DISCOVERY_DOCS)
 }
 
 export const listFiles = async (): Promise<any[]> => {
