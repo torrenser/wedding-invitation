@@ -8,6 +8,7 @@ import { GuestBook } from "@/components/guestBook";
 import { Separator } from "@/components/ui/separator";
 import { WeddingEvent } from "@/components/events";
 import { MoneyGift } from "@/components/moneyGift";
+import { Footer } from "@/components/footer";
 
 export default function App() {
   return (
@@ -40,6 +41,10 @@ export default function App() {
         <Separator />
 
         <GuestBook />
+
+        <Separator />
+
+        <Footer />
 
         <AudioPlayer src={`${import.meta.env.BASE_URL}bgm.mp3`} />
       </div>
