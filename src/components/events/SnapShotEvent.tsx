@@ -1,5 +1,5 @@
-import { useState, useEffect, useContext, type ReactNode } from "react";
-import { GoogleContext } from "@/store/context";
+import { useState, useEffect, type ReactNode } from "react";
+import { uploadFile } from "@/api/snapshotUpload";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -91,7 +91,6 @@ export function GuestSnapEvent() {
 }
 
 function UploadForm({ onClose }: { onClose: () => void }) {
-  const { isSignedIn, signIn, uploadFiles } = useContext(GoogleContext);
   const [name, setName] = useState("");
   const [files, setFiles] = useState<FileList | null>(null);
   const [previews, setPreviews] = useState<string[]>([]);
@@ -122,11 +121,6 @@ function UploadForm({ onClose }: { onClose: () => void }) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!isSignedIn) {
-      signIn();
-      return;
-    }
-
     if (!name || !files || files.length === 0) {
       alert("이름과 사진을 모두 입력해주세요.");
       return;
@@ -136,9 +130,17 @@ function UploadForm({ onClose }: { onClose: () => void }) {
     setProgress(0);
 
     try {
-      // 실제 구글 드라이브 업로드
-      await uploadFiles(Array.from(files), name, setProgress);
-      setProgress(100);
+      const fileList = Array.from(files);
+      const totalFiles = fileList.length;
+      let completedCount = 0;
+
+      // 병렬 업로드 처리 및 진행률 업데이트
+      await Promise.all(fileList.map(async (file) => {
+        await uploadFile(file, name);
+        completedCount++;
+        setProgress(Math.round((completedCount / totalFiles) * 100));
+      }));
+
       await new Promise((resolve) => setTimeout(resolve, 500));
       alert("업로드가 완료되었습니다! 참여해 주셔서 감사합니다.");
       onClose();
@@ -207,18 +209,12 @@ function UploadForm({ onClose }: { onClose: () => void }) {
         </div>
       )}
 
-      {!isSignedIn && (
-        <div className="text-xs text-center text-red-500">
-          ⚠️ 원활한 사진 공유를 위해 신랑 계정으로 먼저 로그인해주세요.
-        </div>
-      )}
-
       <div className="flex justify-end gap-2 pt-4">
         <Button type="button" variant="outline" onClick={onClose} disabled={uploading}>
           취소
         </Button>
         <Button type="submit" disabled={uploading}>
-          {uploading ? "업로드 중..." : isSignedIn ? "업로드" : "신랑 계정으로 로그인"}
+          {uploading ? "업로드 중..." : "업로드"}
         </Button>
       </div>
     </form>

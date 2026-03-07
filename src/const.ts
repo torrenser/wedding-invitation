@@ -88,3 +88,5 @@ export const GROOM_INFO = [
     account: "국민은행 000000000000",
   },
 ]
+
+export const ADMIN_EMAIL = "whdlsdnwedding@gmail.com"

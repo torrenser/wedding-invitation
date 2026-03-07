@@ -3,3 +3,4 @@ export const KAKAO_SDK_JS_KEY = import.meta.env.VITE_KAKAO_SDK_JS_KEY
 export const SERVER_URL = import.meta.env.VITE_SUPABASE_URL
 export const SERVER_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY
 export const STATIC_ONLY = import.meta.env.VITE_STATIC_ONLY === "true"
+export const UPLOAD_KEY = import.meta.env.VITE_UPLOAD_KEY;
