@@ -15,37 +15,21 @@ export default function App() {
     <div className="min-h-screen bg-gray-100 flex justify-center">
       <div className="w-full max-w-[430px] bg-white shadow-xl min-h-screen flex flex-col relative">
         <Cover />
-
         <InvitationText />
-
         <Separator />
-
         <WeddingSchedule />
-
         <Separator />
-
         <WeddingGallery />
-
         <Separator />
-
         <WeddingLocation />
-
         <Separator />
-
         <WeddingEvent />
-
         <Separator />
-
         <MoneyGift />
-
         <Separator />
-
         <GuestBook />
-
         <Separator />
-
         <Footer />
-
         <AudioPlayer src={`${import.meta.env.BASE_URL}bgm.mp3`} />
       </div>
     </div>
