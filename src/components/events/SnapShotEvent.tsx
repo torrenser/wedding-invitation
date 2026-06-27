@@ -115,6 +115,12 @@ function UploadForm({ onClose }: { onClose: () => void }) {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
+      if (e.target.files.length > 50) {
+        alert("한 번에 최대 50개의 사진만 업로드할 수 있습니다.");
+        e.target.value = "";
+        setFiles(null);
+        return;
+      }
       setFiles(e.target.files);
     }
   };
@@ -123,6 +129,10 @@ function UploadForm({ onClose }: { onClose: () => void }) {
     e.preventDefault();
     if (!name || !files || files.length === 0) {
       alert("이름과 사진을 모두 입력해주세요.");
+      return;
+    }
+    if (files.length > 50) {
+      alert("한 번에 최대 50개의 사진만 업로드할 수 있습니다.");
       return;
     }
 
