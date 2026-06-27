@@ -3,46 +3,46 @@ export const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY
 const DISCOVERY_DOCS = 'https://www.googleapis.com/discovery/v1/apis/drive/v3/rest'
 
 export const initGapiClient = async () => {
-	await gapi.client.init({})
-	await gapi.client.load(DISCOVERY_DOCS)
+  await gapi.client.init({})
+  await gapi.client.load(DISCOVERY_DOCS)
 }
 
 export const listFiles = async (): Promise<any[]> => {
-	try {
-		const response = await gapi.client.drive.files.list({
-			pageSize: 10,
-			fields: 'nextPageToken, files(id, name, mimeType)',
-		})
-		return response.result.files || []
-	} catch (error) {
-		console.error('Error listing files:', error)
-		throw new Error('Failed to retrieve files from Google Drive.')
-	}
+  try {
+    const response = await gapi.client.drive.files.list({
+      pageSize: 10,
+      fields: 'nextPageToken, files(id, name, mimeType)',
+    })
+    return response.result.files || []
+  } catch (error) {
+    console.error('Error listing files:', error)
+    throw new Error('Failed to retrieve files from Google Drive.')
+  }
 }
 
 export const uploadFile = async (file: File, folderId: string) => {
-	const accessToken = gapi.client.getToken().access_token
-	const metadata = {
-		name: file.name,
-		mimeType: file.type,
-		parents: [folderId],
-	}
+  const accessToken = gapi.client.getToken().access_token
+  const metadata = {
+    name: file.name,
+    mimeType: file.type,
+    parents: [folderId],
+  }
 
-	const form = new FormData()
-	form.append('metadata', new Blob([JSON.stringify(metadata)], { type: 'application/json' }))
-	form.append('file', file)
+  const form = new FormData()
+  form.append('metadata', new Blob([JSON.stringify(metadata)], { type: 'application/json' }))
+  form.append('file', file)
 
-	const response = await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart', {
-		method: 'POST',
-		headers: new Headers({ Authorization: 'Bearer ' + accessToken }),
-		body: form,
-	})
+  const response = await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart', {
+    method: 'POST',
+    headers: new Headers({ Authorization: 'Bearer ' + accessToken }),
+    body: form,
+  })
 
-	if (!response.ok) {
-		throw new Error('Failed to upload file')
-	}
+  if (!response.ok) {
+    throw new Error('Failed to upload file')
+  }
 
-	return await response.json()
+  return await response.json()
 }
 
 export const uploadFiles = async (

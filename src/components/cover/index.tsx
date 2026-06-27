@@ -1,6 +1,6 @@
 import { useRef } from "react"
 import { motion, useScroll, useTransform } from "motion/react"
-import cover from "@/assets/images/cover.png";
+import { COVER_IMAGE, HAPPY_WEDDING_WHITE } from "@/assets/images";
 
 export function Cover() {
   const containerRef = useRef(null)
@@ -29,24 +29,26 @@ export function Cover() {
         <motion.div
           className="absolute -inset-[12%] bg-cover bg-center will-change-transform"
           style={{
-            backgroundImage: `url(${cover})`,
+            backgroundImage: `url(${COVER_IMAGE})`,
             scale: bgScale,
             filter: bgFilter,
             opacity: bgOpacity,
           }}
         />
-        <div className="relative z-10 w-full h-full flex items-center justify-center">
+        <div className="relative z-10 w-full h-full flex items-end justify-center pb-28">
         <motion.div
-          className="text-center text-white px-6 will-change-transform"
+          className="text-center will-change-transform max-w-[280px] mx-4"
           style={{
             y: textY,
             opacity: textOpacity,
             filter: textFilter,
           }}
         >
-          <h1 className="text-4xl font-bold text-white drop-shadow-md tracking-widest">
-            우리 결혼합니다.
-          </h1>
+          <img
+            src={HAPPY_WEDDING_WHITE}
+            alt="Happy Wedding"
+            className="w-full object-contain filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
+          />
         </motion.div>
         </div>
         {/* 스크롤 힌트 */}
