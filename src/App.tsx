@@ -9,6 +9,7 @@ import { Separator } from "@/components/ui/separator";
 import { WeddingEvent } from "@/components/events";
 import { MoneyGift } from "@/components/moneyGift";
 import { Footer } from "@/components/footer";
+import { YoutubeSection } from "./components/loveMovie";
 
 export default function App() {
   return (
@@ -16,6 +17,8 @@ export default function App() {
       <div className="w-full max-w-[430px] bg-white shadow-xl min-h-screen flex flex-col relative">
         <Cover />
         <InvitationText />
+        <Separator />
+        <YoutubeSection videoId="qBtvbeIPwF8" />
         <Separator />
         <WeddingSchedule />
         <Separator />

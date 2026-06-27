@@ -176,15 +176,26 @@ function UploadForm({ onClose }: { onClose: () => void }) {
         />
         {previews.length > 0 && (
           <div className="grid grid-cols-3 gap-2 mt-2">
-            {previews.map((preview, index) => (
-              <div key={index} className="relative aspect-square rounded-md overflow-hidden border bg-gray-100">
-                <img
-                  src={preview}
-                  alt={`Preview ${index + 1}`}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            ))}
+            {previews.slice(0, 3).map((preview, index) => {
+              const isLast = index === 2;
+              const hasMore = previews.length > 3;
+              const remainingCount = previews.length - 2;
+
+              return (
+                <div key={index} className="relative aspect-square rounded-md overflow-hidden border bg-gray-100">
+                  <img
+                    src={preview}
+                    alt={`Preview ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                  {isLast && hasMore && (
+                    <div className="absolute inset-0 bg-black/60 flex items-center justify-center text-white font-semibold text-sm backdrop-blur-[1px]">
+                      +{remainingCount}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         )}
         {files && files.length > 0 && (

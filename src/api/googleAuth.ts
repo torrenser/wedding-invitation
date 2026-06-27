@@ -71,11 +71,16 @@ export const checkAdminToken = async () => {
     body: JSON.stringify({ email_prefix: ADMIN_EMAIL }),
   });
 
-  if (!response.ok) {
-    throw new Error("Admin check failed");
+  const data = await response.json();
+
+  if (response.status === 400 || response.status === 401) {
+    return { allowed: false, reason: data.reason };
   }
 
-  const data = await response.json();
+  if (!response.ok) {
+    throw new Error(`Server error: ${response.status}`);
+  }
+
   return data;
 };
 
