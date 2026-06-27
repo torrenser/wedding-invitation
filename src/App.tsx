@@ -18,7 +18,7 @@ export default function App() {
         <Cover />
         <InvitationText />
         <Separator />
-        <YoutubeSection videoId="gdmRpnSu2tk" />
+        <YoutubeSection videoId="VEB1yvUtaAg" />
         <Separator />
         <WeddingSchedule />
         <Separator />
