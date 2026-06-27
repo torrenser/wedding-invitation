@@ -30,11 +30,9 @@ export const TMAP_URL = "https://tmap.life/779fa60a"
 export const NMAP_URL = "https://naver.me/56DHiDGb"
 export const KMAP_URL = "https://kko.to/ggsCNT5mlq"
 
-export const BRIDE_FULLNAME = "00"
-export const BRIDE_FIRSTNAME = "00"
-export const BRIDE_TITLE = "장녀"
-export const BRIDE_FATHER = "000"
-export const BRIDE_MOTHER = "000"
+export const BRIDE_FULLNAME = "이예진"
+export const BRIDE_FATHER = "이성득"
+export const BRIDE_MOTHER = "최재희"
 export const BRIDE_INFO = [
   {
     relation: "신부",
@@ -56,11 +54,9 @@ export const BRIDE_INFO = [
   },
 ]
 
-export const GROOM_FULLNAME = "000"
-export const GROOM_FIRSTNAME = "00"
-export const GROOM_TITLE = "차남"
-export const GROOM_FATHER = "000"
-export const GROOM_MOTHER = "000"
+export const GROOM_FULLNAME = "조석영"
+export const GROOM_FATHER = "조인석"
+export const GROOM_MOTHER = "이미현"
 export const GROOM_INFO = [
   {
     relation: "신랑",
