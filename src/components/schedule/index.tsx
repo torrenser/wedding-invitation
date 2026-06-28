@@ -16,7 +16,7 @@ export function WeddingSchedule() {
   ];
 
   return (
-    <WeddingSection title="WEDDING DAY" subtitle="10월 10일 토요일 오후 2시" className="bg-white">
+    <WeddingSection title="WEDDING DAY" subtitle="10월 10일 토요일 오후 1시" className="bg-white">
       <Card className="w-full border-none shadow-none">
         <CardContent className="p-0">
           <div className="grid grid-cols-7 gap-2 text-center text-sm mb-4">
