@@ -34,7 +34,7 @@ export function WeddingGallery() {
 
   return (
     <WeddingSection title="GALLERY" subtitle="우리의 아름다운 순간들" className="bg-gray-50">
-      <div className="grid grid-cols-2 gap-2">
+      <div className="grid grid-cols-3 gap-2">
         {visibleImages.map((src, index) => (
           <div
             key={index}
@@ -44,7 +44,7 @@ export function WeddingGallery() {
              {/* <div className="absolute inset-0 flex items-center justify-center text-gray-400 bg-gray-100">
                 Image {index + 1}
              </div> */}
-             <img src={src} alt={`Gallery ${index + 1}`} className="w-full h-full object-cover relative transition-transform hover:scale-105 duration-300" />
+             <img src={src} alt={`Gallery ${index + 1}`} loading={index < 4 ? "eager" : "lazy"} className="w-full h-full object-cover relative transition-transform hover:scale-105 duration-300" />
           </div>
         ))}
       </div>
@@ -79,6 +79,7 @@ export function WeddingGallery() {
                     <img
                       src={src}
                       alt={`Gallery ${index + 1}`}
+                      loading="lazy"
                       className="w-full h-full object-contain"
                     />
                   </div>
