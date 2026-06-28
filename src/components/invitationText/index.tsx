@@ -19,10 +19,6 @@ export function InvitationText() {
     ],
   ]
 
-  // 각 문단의 fade-in delay: 이전 문단 줄 수 × 줄당 노출 시간
-  const lineDelay = 0.8 // 줄 하나 당 초
-  let cumulativeDelay = 0
-
   return (
     <section className="py-16 px-8 flex flex-col items-start justify-center space-y-6">
       {paragraphs.map((lines, pi) => (
