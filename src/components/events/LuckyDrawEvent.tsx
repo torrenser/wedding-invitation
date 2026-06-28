@@ -5,7 +5,7 @@ export function LuckyDrawEvent() {
       <div className="space-y-2">
         <h4 className="text-lg font-bold text-primary">🎁 감사한 마음을 담은 럭키드로우 🎁</h4>
         <div className="text-sm text-gray-600 leading-relaxed space-y-4">
-          <p className="font-medium text-gray-800">
+          <p>
             멀리서 발걸음 해주신 하객 여러분께 감사의 마음을 전하고자<br />
             소중한 댓글(방명록)을 남겨주신 분들 중<br />
             추첨을 통해 소정의 선물을 드립니다!

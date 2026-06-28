@@ -107,7 +107,7 @@ export function WeddingLocation() {
           </li>
           <li className="flex items-start gap-2">
             <span className="mt-0.5 shrink-0 text-primary">•</span>
-            <span>ATM 기기는 <strong className="text-gray-800">'선비꼬마김밥' 옆</strong>에서 이용하실 수 있습니다.</span>
+            <span>ATM 기기는 <strong className="text-gray-800">탑동 센트럴 힐데스하임 아파트 정문 왼편</strong>에서 이용하실 수 있습니다.</span>
           </li>
         </ul>
       </div>
