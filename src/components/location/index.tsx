@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { WeddingSection } from "@/components/section";
 import KakaoMap from "@/components/location/kakaoMap";
 import { KMAP_TIMESTAMP, KMAP_MAPKEY, TMAP_URL, NMAP_URL, KMAP_URL, LOCATION, LOCATION_ADDRESS } from "@/const";
+import { YAKDO_IMAGE } from "@/assets/images";
 
 export function WeddingLocation() {
   return (
@@ -70,6 +71,45 @@ export function WeddingLocation() {
             <p className="text-gray-500">(충북 청주시 상당구 탑동로 22)</p>
           </div>
         </div>
+      </div>
+
+      {/* 추가 안내 섹션 */}
+      <div className="mt-8 px-4">
+        <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-1.5 text-sm">
+          📍 추가 안내
+        </h4>
+        <img
+          src={YAKDO_IMAGE}
+          alt="청주동산교회 약도"
+          loading="lazy"
+          className="w-full rounded-xl shadow-sm border border-gray-100 mb-4"
+        />
+        <ul className="space-y-2.5 text-xs text-gray-600 bg-gray-50 rounded-xl p-4">
+          <li className="flex items-start gap-2">
+            <span className="mt-0.5 shrink-0 text-primary">•</span>
+            <span>예식은 <strong className="text-gray-800">본당 2층</strong>에서 진행됩니다.</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="mt-0.5 shrink-0 text-primary">•</span>
+            <span>신부대기실은 <strong className="text-gray-800">본당 3층</strong>에 마련되어 있습니다.</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="mt-0.5 shrink-0 text-primary">•</span>
+            <span>연회장은 <strong className="text-gray-800">동산교육문화센터 1층</strong>에 준비되어 있습니다.</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="mt-0.5 shrink-0 text-primary">•</span>
+            <span>샬롬카페는 <strong className="text-gray-800">샬롬관 2층</strong>에 위치해 있습니다.</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="mt-0.5 shrink-0 text-primary">•</span>
+            <span>편의를 위해 <strong className="text-gray-800">각 건물마다 엘리베이터</strong>가 설치되어 있습니다.</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="mt-0.5 shrink-0 text-primary">•</span>
+            <span>ATM 기기는 <strong className="text-gray-800">'선비꼬마김밥' 옆</strong>에서 이용하실 수 있습니다.</span>
+          </li>
+        </ul>
       </div>
     </WeddingSection>
   );

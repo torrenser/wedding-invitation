@@ -1,5 +1,6 @@
 import coverImage from "./cover.jpeg"
 import happyWeddingWhite from "./happy_wedding_white.png"
+import yakdo from "./yakdo.png"
 import image1 from "./image1.jpg"
 import image2 from "./image2.jpg"
 import image3 from "./image3.jpg"
@@ -23,6 +24,7 @@ import image20 from "./image20.jpg"
 
 export const COVER_IMAGE = coverImage
 export const HAPPY_WEDDING_WHITE = happyWeddingWhite
+export const YAKDO_IMAGE = yakdo
 
 export const GALLERY_IMAGES = [
   image1,
