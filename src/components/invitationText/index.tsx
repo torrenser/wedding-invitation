@@ -15,12 +15,22 @@ export function InvitationText() {
   const typingDelay = text.length * typeSpeed // ms 단위
 
   return (
-    <section className="py-20 px-8 text-center flex flex-col items-center justify-center space-y-8 bg-white">
-      <h2 className="text-lg font-bold text-primary tracking-wide mb-6">
+    <section
+      className="relative py-20 px-8 text-center flex flex-col items-center justify-center space-y-8"
+      style={{
+        background: "#fff8f0",
+        backgroundImage: "repeating-linear-gradient(transparent, transparent 27px, rgba(200,150,100,0.12) 28px)",
+        boxShadow: "inset 0 0 0 1px rgba(200,150,100,0.15)"
+      }}
+    >
+      <h2 className="relative z-10 text-lg font-bold text-primary tracking-wide mb-6">
         소중한 분들을 초대합니다.
       </h2>
-      <div className="space-y-5 text-gray-600 leading-loose text-sm">
-        <TypingAnimation className="whitespace-pre-line text-gray-600 leading-snug text-sm" typeSpeed={typeSpeed}>
+      <div className="relative z-10 space-y-5 text-gray-600 text-sm">
+        <TypingAnimation
+          className="whitespace-pre-line text-gray-600 leading-snug text-sm"
+          typeSpeed={typeSpeed}
+        >
           {text}
         </TypingAnimation>
         <div className="flex justify-center mt-4">
