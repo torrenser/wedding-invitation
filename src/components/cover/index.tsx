@@ -35,7 +35,7 @@ export function Cover() {
             opacity: bgOpacity,
           }}
         />
-        <div className="relative z-10 w-full h-full flex items-end justify-center pb-28">
+        <div className="relative z-10 w-full h-full flex items-start justify-center pt-24">
         <motion.div
           className="text-center will-change-transform max-w-[280px] mx-4"
           style={{
