@@ -1,5 +1,6 @@
 import { WeddingSection } from "@/components/section";
 import { EventItem, GuestSnapEvent } from "./SnapShotEvent";
+import { LuckyDrawEvent } from "./LuckyDrawEvent";
 
 export function WeddingEvent() {
   return (
@@ -13,11 +14,9 @@ export function WeddingEvent() {
         </EventItem>
         <EventItem
           title="이벤트 2. 럭키드로우"
-          subtitle="행운의 주인공은 누구?"
+          subtitle="참석해 주신 분들을 위한 감사 이벤트"
         >
-          <div className="p-8 text-center text-gray-500 text-sm">
-            준비 중입니다.
-          </div>
+          <LuckyDrawEvent />
         </EventItem>
       </div>
     </WeddingSection>
