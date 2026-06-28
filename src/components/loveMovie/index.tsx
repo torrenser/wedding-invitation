@@ -57,14 +57,14 @@ export function YoutubeSection({ videoId }: YoutubeSectionProps) {
         {/* 유튜브 */}
         {phase === "video" && (
           <motion.div
-            className="absolute inset-0"
+            className="absolute inset-0 overflow-hidden pointer-events-none"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.4, ease: "easeInOut" }}
           >
             <iframe
-              className="w-full h-full"
-              src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}`}
+              className="absolute top-1/2 left-1/2 w-[115%] h-[115%] -translate-x-1/2 -translate-y-1/2 aspect-video"
+              src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&cc_load_policy=0&iv_load_policy=3&modestbranding=1&rel=0`}
               allow="autoplay; encrypted-media"
               allowFullScreen
             />

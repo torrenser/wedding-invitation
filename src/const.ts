@@ -18,11 +18,6 @@ export const HOLIDAYS = [15]
 
 export const LOCATION = "청주동산교회"
 export const LOCATION_ADDRESS = "충청북도 청주시 상당구 탑동로 22"
-export const LOCATION_BUS_GUIDE_1 = "센트럴시티(서울) <-> 청주대정류소"
-export const LOCATION_BUS_GUIDE_2 = "수원버스터미널 <-> 청주시외버스터미널"
-export const LOCATION_TRAIN_GUIDE_1 = "오송역"
-export const LOCATION_TRAIN_GUIDE_2 = "택시 이용 (약 30분 소요), 버스 이용 (약 1시간 소요)"
-export const LOCATION_PARKING_GUIDE = "청주동산교회 주차장"
 
 export const KMAP_TIMESTAMP = "1772860552032"
 export const KMAP_MAPKEY = "iv6u85kapkw"
