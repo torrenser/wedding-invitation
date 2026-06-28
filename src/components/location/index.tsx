@@ -43,13 +43,13 @@ export function WeddingLocation() {
             <div>
               <p className="font-semibold text-gray-800 text-xs mb-1">▪️ 판교 ↔ 청주</p>
               <p className="text-xs text-gray-600 leading-relaxed pl-1">
-                성남종합버스터미널 승차 → 청주시외버스터미널 하차 → 급행 509번 탑승 → 육거리 정류소 하차 → 도보 10분
+                성남종합버스터미널 승차 → 청주시외버스터미널 하차 → 급행 509번 승차 → 육거리 정류소 하차 → 도보 10분
               </p>
             </div>
             <div>
               <p className="font-semibold text-gray-800 text-xs mb-1">▪️ 수원 ↔ 청주</p>
               <p className="text-xs text-gray-600 leading-relaxed pl-1">
-                수원버스터미널 승차 → 청주시외버스터미널 하차 → 시내버스 509번 탑승 → 육거리 정류소 하차 → 도보 10분
+                수원버스터미널 승차 → 청주시외버스터미널 하차 → 급행 509번 승차 → 육거리 정류소 하차 → 도보 10분
               </p>
             </div>
           </div>
@@ -108,6 +108,10 @@ export function WeddingLocation() {
           <li className="flex items-start gap-2">
             <span className="mt-0.5 shrink-0 text-primary">•</span>
             <span>ATM 기기는 <strong className="text-gray-800">탑동 센트럴 힐데스하임 아파트 정문 왼편</strong>에서 이용하실 수 있습니다.</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="mt-0.5 shrink-0 text-primary">•</span>
+            <span>주차는 <strong className="text-gray-800">청주 동산교회 주차장</strong>을 이용하실 수 있습니다.</span>
           </li>
         </ul>
       </div>
