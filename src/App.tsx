@@ -9,7 +9,8 @@ import { Separator } from "@/components/ui/separator";
 import { WeddingEvent } from "@/components/events";
 import { MoneyGift } from "@/components/moneyGift";
 import { Footer } from "@/components/footer";
-import { YoutubeSection } from "./components/loveMovie";
+import { LoveMovieSection } from "./components/loveMovie";
+import loveStoryVideo from "@/assets/movies/lovestory.mov";
 
 export default function App() {
   return (
@@ -18,7 +19,7 @@ export default function App() {
         <Cover />
         <InvitationText />
         <Separator />
-        <YoutubeSection videoId="VEB1yvUtaAg" />
+        <LoveMovieSection videoUrl={loveStoryVideo} />
         <Separator />
         <WeddingSchedule />
         <Separator />

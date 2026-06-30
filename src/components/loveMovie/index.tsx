@@ -1,13 +1,13 @@
 import { useRef, useState, useEffect } from "react"
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "motion/react"
 
-interface YoutubeSectionProps {
-  videoId: string
+interface LoveMovieSectionProps {
+  videoUrl: string
 }
 
 const TITLE = "our love story"
 
-export function YoutubeSection({ videoId }: YoutubeSectionProps) {
+export function LoveMovieSection({ videoUrl }: LoveMovieSectionProps) {
   const containerRef = useRef(null)
   const [phase, setPhase] = useState<"idle" | "typing" | "video">("idle")
   const [visibleCount, setVisibleCount] = useState(0)
@@ -54,7 +54,7 @@ export function YoutubeSection({ videoId }: YoutubeSectionProps) {
     >
       <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16/9" }}>
 
-        {/* 유튜브 */}
+        {/* 비디오 재생 (광고/자막 없는 HTML5 비디오) */}
         {phase === "video" && (
           <motion.div
             className="absolute inset-0 overflow-hidden pointer-events-none"
@@ -62,11 +62,13 @@ export function YoutubeSection({ videoId }: YoutubeSectionProps) {
             animate={{ opacity: 1 }}
             transition={{ duration: 1.4, ease: "easeInOut" }}
           >
-            <iframe
-              className="absolute top-1/2 left-1/2 w-[115%] h-[115%] -translate-x-1/2 -translate-y-1/2 aspect-video"
-              src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&cc_load_policy=0&iv_load_policy=3&modestbranding=1&rel=0`}
-              allow="autoplay; encrypted-media"
-              allowFullScreen
+            <video
+              className="absolute top-1/2 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2 object-cover"
+              src={videoUrl}
+              autoPlay
+              muted
+              loop
+              playsInline
             />
           </motion.div>
         )}
