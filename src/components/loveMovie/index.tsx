@@ -9,6 +9,7 @@ const TITLE = "our love story"
 
 export function LoveMovieSection({ videoUrl }: LoveMovieSectionProps) {
   const containerRef = useRef(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
   const [phase, setPhase] = useState<"idle" | "typing" | "video">("idle")
   const [visibleCount, setVisibleCount] = useState(0)
 
@@ -19,7 +20,8 @@ export function LoveMovieSection({ videoUrl }: LoveMovieSectionProps) {
 
   useMotionValueEvent(scrollYProgress, "change", (v) => {
     if (v >= 0.95 && phase === "idle") setPhase("typing")
-    if (v < 0.95 && phase !== "idle") {
+    // 화면에서 거의 벗어났을 때만 초기화하여 스크롤 중 끊김 현상 방지
+    if (v < 0.15 && phase !== "idle") {
       setPhase("idle")
       setVisibleCount(0)
     }
@@ -46,36 +48,45 @@ export function LoveMovieSection({ videoUrl }: LoveMovieSectionProps) {
     return () => clearInterval(timer)
   }, [phase])
 
+  // 비디오 재생 시점 제어 (처음부터 재생 시작)
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    if (phase === "video") {
+      video.currentTime = 0
+      video.play().catch((err) => {
+        console.warn("Video playback started, but autoplay was blocked or failed:", err)
+      })
+    } else {
+      video.pause()
+    }
+  }, [phase])
+
   return (
     <motion.div
       ref={containerRef}
       className="relative w-full flex items-center justify-center overflow-hidden bg-black"
       style={{ paddingTop: "3rem", paddingBottom: "3rem" }}
     >
-      <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16/9" }}>
+      <div className="relative w-full overflow-hidden">
 
-        {/* 비디오 재생 (광고/자막 없는 HTML5 비디오) */}
-        {phase === "video" && (
-          <motion.div
-            className="absolute inset-0 overflow-hidden pointer-events-none"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.4, ease: "easeInOut" }}
-          >
-            <video
-              className="absolute top-1/2 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2 object-cover"
-              src={videoUrl}
-              autoPlay
-              muted
-              loop
-              playsInline
-            />
-          </motion.div>
-        )}
+        {/* 비디오 재생 (비디오의 원래 비율에 맞춰 가로세로가 자동 조절됨) */}
+        <video
+          ref={videoRef}
+          className={`w-full h-auto object-contain transition-opacity duration-1000 ${
+            phase === "video" ? "opacity-100" : "opacity-0"
+          }`}
+          src={videoUrl}
+          muted
+          loop
+          playsInline
+          controls
+        />
 
         {/* 타이핑 오버레이 */}
         <AnimatePresence>
-          {phase === "typing" && (
+          {phase !== "video" && (
             <motion.div
               key="typing-bg"
               className="absolute inset-0 bg-black flex items-center justify-center z-10"
