@@ -21,13 +21,6 @@ Deno.serve(async (req: Request) => {
         const supabaseServiceRole = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
         const frontendUrl = Deno.env.get("FRONTEND_URL");
 
-        console.log("client ID : ", clientId);
-        console.log("clientSecret : ", clientSecret);
-        console.log("redirectUri : ", redirectUri);
-        console.log("supabaseUrl : ", supabaseUrl);
-        console.log("supabaseServiceRole : ", supabaseServiceRole);
-        console.log("frontendUrl : ", frontendUrl);
-
         if (!clientId || !clientSecret || !redirectUri || !supabaseUrl || !supabaseServiceRole || !frontendUrl) {
             return new Response(JSON.stringify({ error: "Missing required environment variables" }), {
                 status: 500,
