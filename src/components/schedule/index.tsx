@@ -3,6 +3,8 @@ import {
   CardContent,
 } from "@/components/ui/card";
 import { WeddingSection } from "@/components/section";
+import { WeddingCountdown } from "@/components/countdown";
+import { WeddingDayPhoto } from "@/components/weddingDayPhoto";
 
 export function WeddingSchedule() {
   const days = ["일", "월", "화", "수", "목", "금", "토"];
@@ -17,6 +19,13 @@ export function WeddingSchedule() {
 
   return (
     <WeddingSection title="WEDDING DAY" subtitle="10월 10일 토요일 오후 1시" className="bg-white">
+
+      {/* 1. 웨딩 사진 */}
+      <div className="mt-2 mb-8">
+        <WeddingDayPhoto />
+      </div>
+
+      {/* 2. 달력 */}
       <Card className="w-full border-none shadow-none">
         <CardContent className="p-0">
           <div className="grid grid-cols-7 gap-2 text-center text-sm mb-4">
@@ -43,6 +52,9 @@ export function WeddingSchedule() {
           </div>
         </CardContent>
       </Card>
+
+      {/* 3. D-Day 카운트다운 */}
+      <WeddingCountdown />
     </WeddingSection>
   );
 }

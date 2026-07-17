@@ -142,6 +142,44 @@
     }
   }}
 
+
+
+/* ── Wedding Day Photo ───────────────────────────────────── */
+.wedding-day-photo-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px oklch(0 0 0 / 12%);
+}
+.wedding-day-photo {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  max-height: 480px;
+  transition: transform 0.6s ease;
+}
+.wedding-day-photo-wrapper:hover .wedding-day-photo {
+  transform: scale(1.02);
+}
+.wedding-day-photo-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, oklch(0 0 0 / 45%), transparent);
+  padding: 24px 16px 14px;
+  display: flex;
+  justify-content: center;
+}
+.wedding-day-photo-date {
+  font-family: var(--font-continous);
+  font-size: 1.3rem;
+  color: oklch(0.97 0.005 1);
+  letter-spacing: 0.15em;
+  text-shadow: 0 1px 4px oklch(0 0 0 / 40%);
+}
+
 @font-face {
   font-family: "Continous";
   src: url("@/assets/fonts/continuous.otf") format("opentype"),
