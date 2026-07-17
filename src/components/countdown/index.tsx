@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { FlipUnit } from "@/components/8starlabs-ui/flip-clock";
+import { ScaleToFit } from "../ui/scale-to-fit";
 
 const WEDDING_DATE = new Date("2026-10-10T13:00:00+09:00");
 
@@ -68,15 +69,17 @@ export function WeddingCountdown() {
       <p className="text-[0.65rem] tracking-[0.2em] text-primary font-medium uppercase">
         Our Wedding Begins In
       </p>
-      <div className="flex items-start gap-1.5">
-        <UnitGroup label="DAYS" digits={String(time.days).padStart(2, "0")} />
-        <Colon />
-        <UnitGroup label="HOUR" digits={String(time.hours).padStart(2, "0")} />
-        <Colon />
-        <UnitGroup label="MIN" digits={String(time.minutes).padStart(2, "0")} />
-        <Colon />
-        <UnitGroup label="SEC" digits={String(time.seconds).padStart(2, "0")} />
-      </div>
+      <ScaleToFit>
+        <div className="flex items-start gap-1.5 px-4">
+          <UnitGroup label="DAYS" digits={String(time.days).padStart(2, "0")} />
+          <Colon />
+          <UnitGroup label="HOUR" digits={String(time.hours).padStart(2, "0")} />
+          <Colon />
+          <UnitGroup label="MIN" digits={String(time.minutes).padStart(2, "0")} />
+          <Colon />
+          <UnitGroup label="SEC" digits={String(time.seconds).padStart(2, "0")} />
+        </div>
+      </ScaleToFit>
       <p className="text-xs text-gray-500 mt-1">
         석영, 예진의 결혼식이 <span className="font-semibold text-gray-700">{time.days}일</span> 남았습니다.
       </p>
