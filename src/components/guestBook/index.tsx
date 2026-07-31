@@ -23,7 +23,7 @@ const RULES = {
     maxLength: 10,
   },
   content: {
-    maxLength: 100,
+    maxLength: 500,
   },
 }
 
@@ -317,7 +317,7 @@ const AllGuestBookContent = () => {
         >
           이전
         </Button>
-        
+
         {pages.map((page) => (
           <Button
             key={page}
